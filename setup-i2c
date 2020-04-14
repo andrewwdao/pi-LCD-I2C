@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Setup I2C environment for Raspberry Pi.
+# Tested with Raspbian Buster on Rpi 3B/3B+.
+
+set -eu -o pipefail # fail on error , debug all lines
+
+if [ 'root' != $( whoami ) ] ; then
+  echo "Please run as root! ( sudo ${0} )"
+  exit 1;
+fi
+										## https://pypi.org/project/smbus2/
+# I2C package install - smbus - smbus2  ## https://raspberry-projects.com/pi/programming-in-python/i2c-programming-in-python/using-the-i2c-interface-2
+if [ 0 -eq $( grep -c 'i2c-dev' /etc/modules ) ]; then # check if the phrase "i2c-dev" existed in the file or not
+	echo "i2c-dev" | tee -a /etc/modules
+fi
+if [ 0 -eq $( grep -c 'i2c-bcm2708' /etc/modules ) ]; then # check if the phrase existed in the file or not
+	echo "i2c-bcm2708" | tee -a /etc/modules
+fi
+apt-get install -y python-smbus python3-smbus i2c-tools
+apt-get install python3-pip -y # pip installation
+pip3 install smbus2
+
+
+## (c) 2020 Minh-An Dao. All right reserved
