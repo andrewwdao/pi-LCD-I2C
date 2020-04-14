@@ -3,7 +3,7 @@
 ## About
 This is a Python module for the LCD display connected to a Raspberry Pi.
 
-The LCD type this module is prefer to is the 20x4, 16x2,... (definitely not 12864 LCD)
+Designed for 20x4, 16x2,... LCD (definitely not 12864 LCD)
 
 Ported from C++ library for Arduino on [Github].
 
