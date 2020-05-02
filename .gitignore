@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# Google Drive
+desktop.ini
